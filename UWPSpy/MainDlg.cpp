@@ -1551,7 +1551,9 @@ void CMainDlg::OnTimer(UINT_PTR nIDEvent) {
                     auto treeView =
                         CTreeViewCtrlEx(GetDlgItem(IDC_ELEMENT_TREE));
                     CString str;
-                    TreeViewSubtreeToString(treeView, it->second.treeItem, str);
+                    TreeViewSubtreeToString(
+                        treeView, CTreeItem(it->second.treeItem, &treeView),
+                        str);
                     copied = CopyTextToClipboard(
                         m_hWnd, {str.GetString(), (size_t)str.GetLength()});
                 }
